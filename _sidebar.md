@@ -17,6 +17,7 @@
 -   [15. 获取电信光猫烽火 HG2821U-T 超密](/Docs/获取电信光猫烽火HG2821U-T超密并修改Telnet密码.md)
 -   [16. 隐藏 PowerShell 欢迎页开头标语欢迎信息](/Docs/隐藏PowerShell欢迎页开头标语欢迎信息.md)
 -   [17. Cloudflare部署GitHub静态页面部署命令](/Docs/Cloudflare部署GitHub静态页面部署命令.md)
+-   [18. 静态徽章制作教程](/Docs/静态徽章制作教程.md)
 
 <!-- -   ❉ 备忘清单类
     -   [1. MySQL备忘清单](/Docs_1/MySQL%20备忘清单.md)
