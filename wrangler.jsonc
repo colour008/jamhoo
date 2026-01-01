@@ -1,6 +1,6 @@
 // wrangler.jsonc
 {
     "name": "jamhoo",
-    "main": "src/index.html", // 入口文件路径
+    "main": "index.html", // 入口文件路径
     "compatibility_date": "2026-01-01"
 }
