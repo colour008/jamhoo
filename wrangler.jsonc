@@ -1,6 +1,6 @@
 // wrangler.jsonc
 {
-    "name": "your-static-site", // 替换为你的项目名
+    "name": "jamhoo", // 替换为你的项目名
     "compatibility_date": "2026-01-01",
     "assets": {
         "directory": "./" // index.html 所在目录（根目录填./，子目录填./dist等）
