@@ -2,7 +2,6 @@
 {
     "name": "jamhoo", // 替换为你的项目名（自定义）
     "compatibility_date": "2026-01-01", // 固定填当前日期
-    "main": "./worker.js", // 指向 Worker 脚本（必须存在）
     "assets": {
         "directory": "./" // index.html 所在目录（根目录填./，子目录填./dist等）
     }
