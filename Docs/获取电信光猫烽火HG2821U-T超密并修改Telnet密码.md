@@ -1,19 +1,7 @@
----
-title: 获取电信光猫烽火HG系列超密并修改Telnet密码📡 
-date: 2024-12-02 10:00:00
-updated: 2024-12-02 10:00:00
-tag: [教程,光猫]
-categories: [知识库,光猫]
-cover:
-description: 获取电信光猫烽火HG系列超密并修改Telnet密码📡
-swiper_index: 
-sticky:  
 
 ---
 
----
-
-# 获取超密
+## 获取超密
 
 浏览器输入
 
@@ -81,7 +69,7 @@ touch /usr/local/fh/mf/factory_mode
 
 修改超密。其它的`TR069`、`ftp`、`Samba`、宽带密码都可以在这份配置文件中进行查看和修改。
 
-# 更新光猫配置
+## 更新光猫配置
 
 保存后替换U盘的原名文件，重新插回光猫，再次回到设备管理界面，勾选「快速恢复」更新即可
 

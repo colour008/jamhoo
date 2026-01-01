@@ -1,14 +1,3 @@
----
-title: VSCode 常用快捷键和一些使用技巧💻
-date: 2023-01-20 20:00:00
-updated: 2025-04-16 18:00:00
-tag: [教程,VSCode,快捷键]
-categories: [知识库,VSCode]
-cover: 
-description: VSCode 常用快捷键和一些使用技巧💻
-swiper_index: 
-sticky:  
----
 
 ---
 

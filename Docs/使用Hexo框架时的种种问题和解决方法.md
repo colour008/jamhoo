@@ -1,14 +1,3 @@
----
-title: 使用Hexo框架时的种种问题和解决方法📘
-date: 2024-12-10 20:00:00
-updated: 2024-12-10 20:00:00
-tag: [教程,Hexo]
-categories: [知识库,博客]
-cover:
-description: 使用Hexo框架时的种种问题和解决方法📘
-swiper_index: 
-sticky: 
----
 
 ---
 
@@ -180,7 +169,7 @@ mathjax: true
 title: 使用Hexo框架时的种种问题和解决方法
 date: 2023-07-19 01:17:17
 cover: https://cdn.jsdelivr.net/gh/KiRorY/pic_Warehouse/pic/post2/hexo.jpg
-tags: 
+tags:
 - Hexo
 categories: 教程
 mathjax: true
@@ -197,8 +186,8 @@ $$
 \begin{pmatrix}
 a & b & c \\
 d & e & f \\
-g & h & i 
-\end{pmatrix} 
+g & h & i
+\end{pmatrix}
 $$
 ```
 

@@ -22,15 +22,6 @@
 			rel="stylesheet"
 			href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
 
-		<!-- 1. 引入CodeMirror风格的Prism高亮主题（核心） -->
-		<link
-			rel="stylesheet"
-			href="//cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-codemirror.css" />
-		<!-- 行号插件样式 -->
-		<link
-			rel="stylesheet"
-			href="//cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css" />
-
 		<!-- 引入Google Fonts 思源黑体 (Noto Sans SC) -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
@@ -173,82 +164,21 @@
 				border-bottom: 1px solid #42b983;
 			}
 
-			/* 代码块美化 - 适配CodeMirror主题（核心修复） */
-			.markdown-section pre[class*='language-'] {
-				background-color: #f9f9f9 !important; /* 匹配CodeMirror背景 */
+			/* 代码块基础美化（仅保留基础样式，无高亮） */
+			.markdown-section pre {
+				background-color: #f9f9f9 !important;
 				border-radius: 8px !important;
-				padding: 16px !important;
 				margin-bottom: 20px !important;
 				border: 1px solid #e0e0e0 !important;
 				overflow: auto;
 			}
 
 			/* 代码字体优化（等宽字体） */
-			.markdown-section code[class*='language-'],
-			pre[class*='language-'] code {
+			.markdown-section code,
+			.markdown-section pre code {
 				font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
 				font-size: 14px !important;
 				line-height: 1.5 !important;
-			}
-
-			/* CodeMirror风格高亮规则（强制覆盖） */
-			.token.comment,
-			.token.prolog,
-			.token.doctype,
-			.token.cdata {
-				color: #008000 !important; /* 注释绿色 */
-			}
-			.token.punctuation {
-				color: #999 !important; /* 标点灰色 */
-			}
-			.token.property,
-			.token.tag,
-			.token.boolean,
-			.token.number,
-			.token.constant,
-			.token.symbol,
-			.token.deleted {
-				color: #099 !important; /* 属性/数字 青绿色 */
-			}
-			.token.selector,
-			.token.attr-name,
-			.token.string,
-			.token.char,
-			.token.builtin,
-			.token.inserted {
-				color: #d14 !important; /* 字符串 红色 */
-			}
-			.token.operator,
-			.token.entity,
-			.token.url,
-			.language-css .token.string,
-			.style .token.string {
-				color: #9a6e3a !important; /* 运算符 棕黄色 */
-			}
-			.token.atrule,
-			.token.attr-value,
-			.token.keyword {
-				color: #07a !important; /* 关键字 蓝色 */
-			}
-			.token.function,
-			.token.class-name {
-				color: #dd4a68 !important; /* 函数/类名 玫红色 */
-			}
-			.token.regex,
-			.token.important,
-			.token.variable {
-				color: #e90 !important; /* 变量/正则 橙色 */
-			}
-
-			/* 行号样式 */
-			pre.line-numbers {
-				padding-left: 4.5em !important;
-			}
-			.line-numbers .line-numbers-rows {
-				border-right: 1px solid #eee;
-			}
-			.line-numbers-rows > span:before {
-				color: #999;
 			}
 
 			/* 列表样式优化 */
@@ -329,7 +259,7 @@
 				color: #666 !important; /* 浅灰色弱化内容文字，突出标题 */
 				font-weight: 400 !important;
 				transition: all 0.2s ease;
-				font-size: 14px !important;
+				font-size: 13px !important;
 				display: inline-block;
 				padding: 1px 0 !important;
 			}
@@ -474,6 +404,20 @@
 			.sidebar .sidebar-nav .collapse-icon.open {
 				transform: rotate(90deg); /* 旋转90度，▶变▼ */
 			}
+
+			.markdown-section pre[data-lang] {
+				overflow: auto !important;
+			}
+
+			.markdown-section pre[data-lang] code {
+				overflow: visible;
+			}
+
+			.line-numbers .line-numbers-rows {
+				border-right: 0px solid white;
+				/* Fix paddings to align with code.*/
+				padding: 5px; /* Same as code block */
+			}
 		</style>
 	</head>
 
@@ -517,7 +461,7 @@
 				// 项目名称
 				name: 'JamHoo的知识库',
 				// 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
-				repo: 'https://github.com/colour008/jamhoo',
+				repo: 'https://github.com/colour008',
 				// 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
 				loadSidebar: true,
 				// 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
@@ -550,17 +494,36 @@
 					auto: true,
 					delay: 500,
 				},
-				// 折叠插件配置：默认折叠所有层级，点击标题展开下一层
-				collapse: {
-					initialState: 'collapse', // 默认折叠
-					expandAll: false, // 不默认展开所有
-					collapseIcon: '▶', // 折叠时图标（向右箭头）
-					expandIcon: '▶', // 展开时图标（通过CSS旋转为向下箭头）
+				markdown: {
+					renderer: {
+						code: function (code, lang) {
+							if (lang == 'html') {
+								code = code
+									.replace(/&/g, '&amp;')
+									.replace(/</g, '&lt;')
+									.replace(/>/g, '&gt;')
+									.replace(/"/g, '&quot;')
+									.replace(/'/g, '&#039;');
+							}
+							return (
+								'<pre data-lang="' +
+								lang +
+								'"><code class="line-numbers language-' +
+								lang +
+								'">' +
+								code +
+								'</code></pre>'
+							);
+						},
+					},
 				},
-				// 代码高亮配置（核心修复：关闭Docsify自带Prism，强制使用外部Prism）
-				prism: {
-					enabled: false, // 关闭Docsify内置的Prism，避免冲突
-				},
+				plugins: [
+					function (hook, vm) {
+						hook.doneEach(function (html) {
+							Prism.highlightAll();
+						});
+					},
+				],
 			};
 		</script>
 		<!-- docsify的js依赖 -->
@@ -577,31 +540,6 @@
 		<script src="//cdn.jsdelivr.net/npm/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
 		<!-- 侧边栏折叠插件（实现点击展开层级） -->
 		<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-
-		<!-- 外部Prism语法高亮（核心修复：独立加载，避免与Docsify内置冲突） -->
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-		<!-- 强制加载SQL语言包（修复SQL高亮） -->
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
-		<!-- 其他语言包（按需添加） -->
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
-		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
-
-		<!-- 页面加载完成后，手动初始化Prism（核心修复：确保代码块被高亮） -->
-		<script>
-			window.addEventListener('load', function () {
-				// 初始化所有代码块的语法高亮
-				Prism.highlightAll();
-				// 为代码块添加行号（可选）
-				document
-					.querySelectorAll('pre[class*="language-"]')
-					.forEach(function (block) {
-						block.classList.add('line-numbers');
-					});
-			});
-		</script>
+		
 	</body>
 </html>
