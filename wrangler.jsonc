@@ -1,6 +1,9 @@
 // wrangler.jsonc
 {
     "name": "jamhoo",
-    "main": "index.html", // 入口文件路径
-    "compatibility_date": "2026-01-01"
+    "compatibility_date": "2026-01-01", // 填当前日期
+    "site": {
+        "bucket": "./", // 静态资源目录（这里是项目根目录，因为index.html在根目录）
+        "entry-point": "."
+    }
 }
