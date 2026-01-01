@@ -3,7 +3,8 @@
 </p>
  <img alt="Static Badge" src="https://img.shields.io/badge/github-jamhoo-blue?logo=github">
 <img alt="Static Badge" src="https://img.shields.io/badge/Colourflare-page-orange?logo=cloudflare">
-<img alt="Static Badge" src="https://shields.io/github/license/SuperManito/LinuxMirrors?color=%23007bff">
+<img alt="Static Badge" src="https://img.shields.io/badge/LICENSE-MIT-green?logo=metrodeparis">
+
 
 
 -   [1. Git 安装配置教程](/Docs/Git安装配置教程.md)
