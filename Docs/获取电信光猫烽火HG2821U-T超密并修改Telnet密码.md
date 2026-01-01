@@ -55,9 +55,7 @@ touch /usr/local/fh/mf/factory_mode
 
 修改`telnet`密码。修改`value`后面的值即可将用户名和密码改成自己的
 
-```
-<param name="TelnetEnable"  rw="2"  type="b"  dev_func="dev_X_CT_COM_ServiceManage_TelnetEnable"  value="0">
-```
+`<param name="TelnetEnable"  rw="2"  type="b" dev_func="dev_X_CT_COM_ServiceManage_TelnetEnable"  value="0">`
 
 这行是开启`Telnet`，`value="0"`表示关闭，改为`1`则是永久打开`telnet`功能。查找`TotalTerminalNumber`，修改`value`后面的数值可修改终端连接数
 
