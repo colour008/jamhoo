@@ -14,7 +14,9 @@
    npx wrangler deploy --assets=./ --name=colour008 --compatibility-date=2025-12-14
    ```
 
-2. 创建 `wrangler.jsonc` 配置文件（推荐，一劳永逸）
+2. 删除路径的`/`
+
+3. 创建 `wrangler.jsonc` 配置文件（推荐，一劳永逸）
 
    ```jsonc
    {
